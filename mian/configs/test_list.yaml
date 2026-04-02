@@ -1,0 +1,70 @@
+  ckpts:
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-11-06_20-16-54/fold0/fold0_tacc_0.77267_tf1_0.73032.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-11-06_20-16-54/fold1/fold1_tacc_0.68524_tf1_0.65459.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-11-06_20-16-54/fold2/fold2_tacc_0.75470_tf1_0.71611.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-11-06_20-16-54/fold3/fold3_tacc_0.72295_tf1_0.64186.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-11-06_20-16-54/fold4/fold4_tacc_0.69272_tf1_0.64058.pth"
+
+
+
+
+
+  #""
+  #original
+ #   ckpts:
+ #     - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-10-25_21-59-43/fold0/fold0_tacc_0.74720_tf1_0.71087.pth"
+ # - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-10-25_21-59-43/fold1/fold1_tacc_0.67819_tf1_0.64226.pth"
+ # - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-10-25_21-59-43/fold2/fold2_tacc_0.75165_tf1_0.70469.pth"
+  #- "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-10-25_21-59-43/fold3/fold3_tacc_0.72255_tf1_0.63854.pth"
+  #- "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-10-25_21-59-43/fold4/fold4_tacc_0.69897_tf1_0.66149.pth"
+
+
+ # """
+
+
+  sleepDGtestsave
+  ckpts:
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-11-07_21-41-16/fold0/best_test_ep62_tacc_0.82745_tf1_0.76698.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-11-07_21-41-16/fold1/best_test_ep43_tacc_0.72456_tf1_0.67517.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-11-07_21-41-16/fold2/best_test_ep52_tacc_0.76285_tf1_0.72127.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-11-07_21-41-16/fold3/best_test_ep73_tacc_0.75608_tf1_0.66459.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-11-07_21-41-16/fold4/best_test_ep37_tacc_0.73655_tf1_0.68273.pth"
+
+
+ sleepDG新脚本首次测试
+  ckpts:
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_psd_run_2025-11-17_11-40-56/fold0/best_val_ep162_vacc_0.81958_vf1_0.78840.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_psd_run_2025-11-17_11-40-56/fold1/best_val_ep137_vacc_0.83481_vf1_0.79697.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_psd_run_2025-11-17_11-40-56/fold2/best_val_ep76_vacc_0.83490_vf1_0.78298.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_psd_run_2025-11-17_11-40-56/fold3/best_val_ep173_vacc_0.83108_vf1_0.80222.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_psd_run_2025-11-17_11-40-56/fold4/best_val_ep83_vacc_0.83919_vf1_0.79386.pth"
+
+
+
+  ckpts:
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_psd_run_2025-11-20_21-04-10/fold0/best_val_ep122_vacc_0.84322_vf1_0.80687.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_psd_run_2025-11-20_21-04-10/fold1/best_val_ep184_vacc_0.86699_vf1_0.80772.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_psd_run_2025-11-20_21-04-10/fold2/best_val_ep192_vacc_0.86215_vf1_0.79743.pth"
+    -
+
+
+
+
+
+
+
+
+
+
+
+7折SleepDG
+  ckpts:
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-12-01_12-32-40/fold0/best_val_ep128_vacc_0.83484_vf1_0.78627.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-12-01_12-32-40/fold1/best_val_ep147_vacc_0.83865_vf1_0.79261.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-12-01_12-32-40/fold2/best_val_ep71_vacc_0.83407_vf1_0.77287.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-12-01_12-32-40/fold3/best_val_ep163_vacc_0.83318_vf1_0.79915.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-12-01_12-32-40/fold4/best_val_ep106_vacc_0.84298_vf1_0.79637.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-12-01_12-32-40/fold5/best_val_ep144_vacc_0.84594_vf1_0.79394.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-12-01_12-32-40/fold6/best_val_ep105_vacc_0.82915_vf1_0.78872.pth"
+    - "/data/lijinyang/1_sleep/DG1/results/sleepdg_original_run_2025-12-01_12-32-40/fold7/best_val_ep158_vacc_0.83194_vf1_0.79454.pth"
+

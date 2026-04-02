@@ -1,0 +1,11 @@
+*.pyc
+*.pyd
+*.pyo
+.DS_Store
+.Python
+.git_bad_*/
+.venv/
+__pycache__/
+env/
+git.py
+venv/

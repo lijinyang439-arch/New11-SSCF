@@ -1,0 +1,45 @@
+model_version: original_sleepdg
+results_log_dir: /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k1_2026-03-16_08-57-53
+test_dataset: HMC
+align:
+  use_alignment: true
+  cluster_centers_path: ./cluster/cluster_output_direct1/ours1_centers.npy
+  cluster_map_path: ./cluster/cluster_output_direct1/ours1_map.json
+seed: 42
+gpus: '1'
+datasets_dir: /fdata/lijinyang/datasets_dir2_all_Merged
+batch_size: 256
+num_workers: 8
+cv_target_order:
+- SHHS1
+- P2018
+- MROS1
+- MROS2
+- MESA
+independent_test_datasets:
+- ABC
+- CCSHS
+- CFS
+- HMC
+- ISRUC
+- sleep-edfx
+model:
+  import_path: original.models.model
+  class_name: Model
+  ckpts:
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k1_2026-03-16_08-57-53/fold0/topk_ep003_va0.8316_ta0.8488.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k1_2026-03-16_08-57-53/fold1/topk_ep005_va0.8541_ta0.8681.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k1_2026-03-16_08-57-53/fold2/topk_ep011_va0.8638_ta0.7870.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k1_2026-03-16_08-57-53/fold3/topk_ep004_va0.8624_ta0.8104.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k1_2026-03-16_08-57-53/fold4/topk_ep005_va0.8645_ta0.7072.pth
+  ensemble_method: logits
+  strict_load: true
+  use_dataparallel: false
+model_type: LDP_CAA_Model
+num_of_classes: 5
+dropout: 0.1
+projection_type: diag
+lowrank_rank: 32
+enable_stats_alignment: 1
+anchor_momentum: 0.9
+num_domains: 4

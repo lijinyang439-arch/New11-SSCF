@@ -1,0 +1,16 @@
+{
+  "source_checkpoint": "/root/autodl-tmp/wujiHDGDDP/topk_ep022_va0.8410_ta0.7852.pth",
+  "n_clusters": 7,
+  "feature_dim": 192,
+  "structure": [
+    64,
+    3
+  ],
+  "datasets": [
+    "MESA",
+    "SHHS1",
+    "MROS1",
+    "MROS2",
+    "P2018"
+  ]
+}

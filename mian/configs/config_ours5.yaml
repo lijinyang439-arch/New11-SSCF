@@ -1,0 +1,64 @@
+# configs/config_original.yaml
+# Configuration for the original SleepDG model (with PSD alignment)
+
+model_version: original        # 继续用 original，这只是选择模型代码版本
+
+run_name: "sleepdg_original_psd_run"
+results_root: "./results"      # 结果保存的根目录
+# === SSAM 离线对齐配置 ===
+align:
+  use_alignment: true
+  # 指定 Ours-5 的聚类中心路径
+  cluster_centers_path: "./clusters_output/ours-5_centers.npy"
+  cluster_map_path: "./clusters_output/ours-5_map.json"
+# === 数据集采样控制 ===
+max_samples_per_dataset:
+# 如果想统一限制每个源域样本数，也可以直接写成一个数字：
+# max_samples_per_dataset: 3000
+
+eval_test_every_epoch: True    # 每个 epoch 都评估一遍 test（正式大跑可以改成 False 提速）
+
+# === 设备与种子 ===
+seed: 443
+gpus: "0,1"                    # "0,1" 表示用两张卡；留空 "" 表示用 CPU
+
+# === 数据集路径与目标域 ===
+datasets_dir: "/data/lijinyang/PSG_ALL_DATA/datasets_dir2"
+target_domains: "sleep-edfx"   # LODO 循环里会被覆盖，这里只是默认值
+num_workers: 8
+
+# === 训练参数 ===
+epochs: 200
+batch_size: 256
+lr: 0.001
+clip_value: 1.0
+label_smoothing: 0.1
+loss_function: "CrossEntropyLoss"
+
+# === 模型参数 ===
+model_type: "AE_Classifier"    # 原始模型类型标识
+num_of_classes: 5
+dropout: 0.1
+
+# 原始 SleepDG 一些对齐/正则相关开关（大部分现在等于占位）
+projection_type: "none"        # 不用 LDP 的话就 none
+lowrank_rank: 32
+enable_stats_alignment: 0
+anchor_momentum: 0.9
+
+# === 关键：对齐与重建的 loss 权重 ===
+# 1) 新的 PSD 几何对齐损失权重
+lambda_psd: 0                # << 新增：真正控制 PSDGeometricLoss 的系数
+# 2) 旧的 lambda_coral 设成 0，避免混淆（Trainer 里已经兼容，但不建议再用）
+lambda_coral: 0.0              # 仅为了兼容旧代码，可以保留但设成 0
+
+lambda_ae: 1.0                 # AE 重建损失权重
+lambda_caa: 0.0                # 目前未实际使用
+lambda_stat: 0.0               # 目前未实际使用
+lambda_Areg: 0.0               # 目前未实际使用
+
+num_domains: 4                 # 源域数量（和你的数据划分保持一致）
+
+# === 训练数据比例控制 ===
+data_ratio: 0.01                  # 1 表示用全部训练数据
+eval_ratio: 0.01                  # 1 表示用全部验证/测试数据

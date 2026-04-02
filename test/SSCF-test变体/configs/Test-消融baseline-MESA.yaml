@@ -1,0 +1,45 @@
+model_version: original_sleepdg
+results_log_dir: /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/消融baseline_2026-03-14_18-36-26
+test_dataset: MESA
+align:
+  use_alignment: true
+  cluster_centers_path: ./wujiHDGDDP/cluster_output_direct/ours-8_centers.npy
+  cluster_map_path: ./wujiHDGDDP/cluster_output_direct/ours-8_map.json
+seed: 42
+gpus: '1'
+datasets_dir: /fdata/lijinyang/datasets_dir2_all_Merged
+batch_size: 256
+num_workers: 8
+cv_target_order:
+- SHHS1
+- P2018
+- MROS1
+- MROS2
+- MESA
+independent_test_datasets:
+- ABC
+- CCSHS
+- CFS
+- HMC
+- ISRUC
+- sleep-edfx
+model:
+  import_path: original.models.model
+  class_name: Model
+  ckpts:
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/消融baseline_2026-03-14_18-36-26/fold0/best_val_acc_va0.8350_vf0.7604_ta0.7367_tf0.6841_ep5.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/消融baseline_2026-03-14_18-36-26/fold1/best_val_acc_va0.8277_vf0.7475_ta0.7199_tf0.6806_ep1.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/消融baseline_2026-03-14_18-36-26/fold2/best_val_acc_va0.8528_vf0.7833_ta0.7784_tf0.7460_ep28.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/消融baseline_2026-03-14_18-36-26/fold3/best_val_acc_va0.7911_vf0.7552_ta0.7276_tf0.6489_ep9.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/消融baseline_2026-03-14_18-36-26/fold4/best_val_f1_va0.8454_vf0.7598_ta0.7502_tf0.7302_ep7.pth
+  ensemble_method: logits
+  strict_load: true
+  use_dataparallel: false
+model_type: LDP_CAA_Model
+num_of_classes: 5
+dropout: 0.1
+projection_type: diag
+lowrank_rank: 32
+enable_stats_alignment: 1
+anchor_momentum: 0.9
+num_domains: 4

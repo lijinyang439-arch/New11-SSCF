@@ -1,0 +1,45 @@
+# test_config.yaml
+# --- 核心测试配置 ---
+model_version: original_sleepdg       
+results_log_dir: '/data/lijinyang/1_SleepHDG主要运行代码/wujiHDGDDP/results/消融baseline_2026-01-19_20-06-10' # !! 修改 !! 指向包含 .pth 文件的 *具体某次训练* 的日志文件夹 (例如 fold0 或 fold1 等)
+test_dataset: 'MROS2'         # !! 修改 !! 指定要进行预测的独立数据集名称
+
+# --- 设备与种子 ---
+seed: 42
+gpus: "5"                   # 指定测试时使用的 GPU 编号，例如 "0" 或 "0,1"。空字符串 "" 表示使用 CPU。
+
+# --- 数据加载 ---
+datasets_dir: '/fdata/lijinyang/datasets_dir2_all' # !! 修改 !! 你的预处理数据集根目录
+batch_size: 256             # 测试时可以使用较大的批次大小以加快速度
+num_workers: 8              # 数据加载进程数，根据你的机器内存和 CPU 核心数调整
+model:
+  import_path: "original.models.model"   # 模型类所在模块
+  class_name: "Model"                    # 模型类名
+  # 二选一：显式列出所有折的权重（推荐）
+  ckpts:
+    - "/data/lijinyang/1_SleepHDG主要运行代码/wujiHDGDDP/results/消融baseline_2026-01-19_20-06-10/fold0/best_val_acc_va0.8602_vf0.7949_ta0.7468_tf0.7186_ep26.pth"
+    - "/data/lijinyang/1_SleepHDG主要运行代码/wujiHDGDDP/results/消融baseline_2026-01-19_20-06-10/fold1/best_val_acc_va0.8597_vf0.7930_ta0.7840_tf0.7554_ep34.pth"
+    - "/data/lijinyang/1_SleepHDG主要运行代码/wujiHDGDDP/results/消融baseline_2026-01-19_20-06-10/fold2/best_val_acc_va0.8224_vf0.7956_ta0.7520_tf0.6689_ep35.pth"
+    - "/data/lijinyang/1_SleepHDG主要运行代码/wujiHDGDDP/results/消融baseline_2026-01-19_20-06-10/fold3/best_val_acc_va0.8657_vf0.7745_ta0.7430_tf0.7053_ep16.pth"
+    - "/data/lijinyang/1_SleepHDG主要运行代码/wujiHDGDDP/results/消融baseline_2026-01-19_20-06-10/fold4/best_test_acc_a0.8162_f0.7630_ep72.pth"
+
+
+
+
+
+
+  ensemble_method: "logits"              # 或 "probs"
+  strict_load: true                      # True严格匹配；False宽松（允许缺失/多余key）
+  use_dataparallel: false
+# --- 模型架构参数 (必须与加载的权重对应的训练配置完全一致) ---
+model_type: 'LDP_CAA_Model' # 模型的标识符 (应与训练时使用的标识符一致)
+num_of_classes: 5           # 类别数量
+dropout: 0.1                # Dropout 比率
+
+
+projection_type: 'diag'     # 域投影类型 ('diag' 或 'lowrank')
+lowrank_rank: 32            # 低秩投影的秩 (如果 projection_type='lowrank')
+enable_stats_alignment: 1   # 是否启用统计对齐 (1=启用, 0=禁用)
+anchor_momentum: 0.9        # 锚点更新的动量因子
+
+num_domains: 4              # 假设原始训练时有 4 个源域

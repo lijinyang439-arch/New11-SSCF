@@ -1,0 +1,144 @@
+[信息] 已加载测试配置：
+align:
+  cluster_centers_path: ./cluster/cluster_output_direct3/ours3_centers.npy
+  cluster_map_path: ./cluster/cluster_output_direct3/ours3_map.json
+  use_alignment: true
+anchor_momentum: 0.9
+batch_size: 256
+cv_target_order:
+- SHHS1
+- P2018
+- MROS1
+- MROS2
+- MESA
+datasets_dir: /fdata/lijinyang/datasets_dir2_all_Merged
+dropout: 0.1
+enable_stats_alignment: 1
+gpus: '1'
+independent_test_datasets:
+- ABC
+- CCSHS
+- CFS
+- HMC
+- ISRUC
+- sleep-edfx
+lowrank_rank: 32
+model:
+  ckpts:
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold0/topk_ep004_va0.8411_ta0.8317.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold1/topk_ep014_va0.8614_ta0.8703.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold2/topk_ep007_va0.8518_ta0.7666.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold3/topk_ep011_va0.8593_ta0.7991.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold4/topk_ep014_va0.8733_ta0.7276.pth
+  class_name: Model
+  ensemble_method: logits
+  import_path: original.models.model
+  strict_load: true
+  use_dataparallel: false
+model_type: LDP_CAA_Model
+model_version: original_sleepdg
+num_domains: 4
+num_of_classes: 5
+num_workers: 8
+projection_type: diag
+results_log_dir: /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52
+seed: 42
+test_dataset: HMC
+
+[信息] 检测到对齐配置，正在从 ./cluster/cluster_output_direct3/ours3_centers.npy 加载几何中心...
+[信息] 几何中心加载成功，形状: torch.Size([3, 192])
+
+--- GPU 诊断 ---
+CUDA_VISIBLE_DEVICES: 1
+torch.cuda.is_available(): True
+torch.cuda.device_count(): 1
+当前设备索引: 0
+设备名称: NVIDIA GeForce RTX 4090
+---------------------
+
+[信息] 配置中解析到以下权重：
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold0/topk_ep004_va0.8411_ta0.8317.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold1/topk_ep014_va0.8614_ta0.8703.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold2/topk_ep007_va0.8518_ta0.7666.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold3/topk_ep011_va0.8593_ta0.7991.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold4/topk_ep014_va0.8733_ta0.7276.pth
+[信息] 当前数据集属于第二类（独立测试集），使用全部权重做集成。
+[信息] 本次实际用于评估的权重：
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold0/topk_ep004_va0.8411_ta0.8317.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold1/topk_ep014_va0.8614_ta0.8703.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold2/topk_ep007_va0.8518_ta0.7666.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold3/topk_ep011_va0.8593_ta0.7991.pth
+  - /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/fold4/topk_ep014_va0.8733_ta0.7276.pth
+[信息] 当前评估模式: independent_ensemble
+[信息] 当前数据集分组: independent
+[信息] 加载测试数据集: HMC ...
+[信息] 加载测试数据: /fdata/lijinyang/datasets_dir2_all_Merged/HMC
+[信息] (主进程) 正在扫描 150 个文件以构建索引...
+[信息] 索引构建完成。有效样本数: 6721
+[信息] 测试数据加载完成。批次数: 27
+[信息] 构建集成模型 ...
+[SSAM] 已初始化外部几何中心，数量: 3
+[SSAM] 已初始化外部几何中心，数量: 3
+[SSAM] 已初始化外部几何中心，数量: 3
+[SSAM] 已初始化外部几何中心，数量: 3
+[SSAM] 已初始化外部几何中心，数量: 3
+[信息] 集成模型已就绪，子模型数量: 5，集成方式: logits，子模型提供 inference: True
+
+--- 开始评估 ---
+Evaluating...:   0%|          | 0/27 [00:00<?, ?it/s]Evaluating...:   4%|▎         | 1/27 [00:03<01:32,  3.54s/it]Evaluating...:  11%|█         | 3/27 [00:06<00:44,  1.87s/it]Evaluating...:  19%|█▊        | 5/27 [00:08<00:34,  1.58s/it]Evaluating...:  26%|██▌       | 7/27 [00:11<00:29,  1.46s/it]Evaluating...:  33%|███▎      | 9/27 [00:13<00:25,  1.40s/it]Evaluating...:  41%|████      | 11/27 [00:16<00:21,  1.36s/it]Evaluating...:  48%|████▊     | 13/27 [00:19<00:18,  1.34s/it]Evaluating...:  56%|█████▌    | 15/27 [00:21<00:15,  1.33s/it]Evaluating...:  63%|██████▎   | 17/27 [00:24<00:13,  1.31s/it]Evaluating...:  70%|███████   | 19/27 [00:26<00:10,  1.31s/it]Evaluating...:  78%|███████▊  | 21/27 [00:29<00:07,  1.31s/it]Evaluating...:  85%|████████▌ | 23/27 [00:32<00:05,  1.30s/it]Evaluating...:  93%|█████████▎| 25/27 [00:34<00:02,  1.30s/it]                                                              
+--- 开始计算置信区间（subject-level bootstrap）---
+CI Eval:   0%|          | 0/27 [00:00<?, ?it/s]CI Eval:   4%|▎         | 1/27 [00:01<00:41,  1.60s/it]CI Eval:   7%|▋         | 2/27 [00:02<00:29,  1.19s/it]CI Eval:  11%|█         | 3/27 [00:03<00:25,  1.06s/it]CI Eval:  15%|█▍        | 4/27 [00:04<00:22,  1.00it/s]CI Eval:  19%|█▊        | 5/27 [00:05<00:21,  1.04it/s]CI Eval:  22%|██▏       | 6/27 [00:06<00:19,  1.06it/s]CI Eval:  26%|██▌       | 7/27 [00:07<00:18,  1.08it/s]CI Eval:  30%|██▉       | 8/27 [00:07<00:17,  1.09it/s]CI Eval:  33%|███▎      | 9/27 [00:08<00:16,  1.09it/s]CI Eval:  37%|███▋      | 10/27 [00:09<00:15,  1.10it/s]CI Eval:  41%|████      | 11/27 [00:10<00:14,  1.10it/s]CI Eval:  44%|████▍     | 12/27 [00:11<00:13,  1.10it/s]CI Eval:  48%|████▊     | 13/27 [00:12<00:12,  1.11it/s]CI Eval:  52%|█████▏    | 14/27 [00:13<00:11,  1.11it/s]CI Eval:  56%|█████▌    | 15/27 [00:14<00:10,  1.11it/s]CI Eval:  59%|█████▉    | 16/27 [00:15<00:09,  1.11it/s]CI Eval:  63%|██████▎   | 17/27 [00:16<00:09,  1.11it/s]CI Eval:  67%|██████▋   | 18/27 [00:16<00:08,  1.11it/s]CI Eval:  70%|███████   | 19/27 [00:17<00:07,  1.11it/s]CI Eval:  74%|███████▍  | 20/27 [00:18<00:06,  1.11it/s]CI Eval:  78%|███████▊  | 21/27 [00:19<00:05,  1.11it/s]CI Eval:  81%|████████▏ | 22/27 [00:20<00:04,  1.11it/s]CI Eval:  85%|████████▌ | 23/27 [00:21<00:03,  1.23it/s]CI Eval:  89%|████████▉ | 24/27 [00:21<00:02,  1.43it/s]CI Eval:  93%|█████████▎| 25/27 [00:22<00:01,  1.61it/s]CI Eval:  96%|█████████▋| 26/27 [00:22<00:00,  1.78it/s]CI Eval: 100%|██████████| 27/27 [00:22<00:00,  2.33it/s]CI Eval: 100%|██████████| 27/27 [00:22<00:00,  1.20it/s]
+[诊断] unique subjects = 150
+[诊断] subject_id dtype = int64
+[诊断] first 10 subject ids: [0 1 2 3 4 5 6 7 8 9]
+[诊断] bootstrap on subjects: S=150, K=5, n_boot=1000
+
+***************** 测试结果（HMC｜N=5） *****************
+模型类:             original.models.model.Model
+评估模式:           independent_ensemble
+数据集分组:         independent
+集成方式:           logits
+权重文件数:         5
+Bootstrap:          subject-level, S=150, n=1000, seed=0
+测试准确率 (Acc):    72.24 ± 1.91
+测试宏 F1 分数:     65.20 ± 1.78
+测试 Cohen's Kappa:  62.18 ± 2.52
+
+Wake F1:            0.77951
+N1 F1:              0.22416
+N2 F1:              0.76567
+N3 F1:              0.67763
+REM F1:             0.81305
+
+各类别 F1 分数 (95% CI):
+  Wake: 77.95 ± 3.90
+  N1: 22.42 ± 2.87
+  N2: 76.57 ± 1.72
+  N3: 67.76 ± 3.30
+  REM: 81.31 ± 2.49
+
+混淆矩阵:
+[[20860   309  1230     5   113]
+ [ 6497  2202  5415    13  1281]
+ [ 2250  1189 44373   528   904]
+ [  293     0 12305 13821     2]
+ [ 1104   539  3339     4 15844]]
+
+分类报告:
+              precision    recall  f1-score   support
+
+           0    0.67282   0.92641   0.77951     22517
+           1    0.51946   0.14291   0.22416     15408
+           2    0.66564   0.90108   0.76567     49244
+           3    0.96173   0.52311   0.67763     26421
+           4    0.87324   0.76063   0.81305     20830
+
+    accuracy                        0.72236    134420
+   macro avg    0.73858   0.65083   0.65200    134420
+weighted avg    0.74045   0.72236   0.69596    134420
+
+******************************************************************
+[信息] 测试结果已保存至: /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/test_results/test_on_HMC_ensemble5.txt
+[信息] 已更新总汇总文件: /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/test_results/summary_all_results.csv
+[信息] 已更新汇总表: /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/test_results/independent_summary.csv
+[信息] 已导出飞书可直接粘贴的 TSV: /data/lijinyang/睡眠分期SSCF的test/人聚类人对齐结果Test/results/Ours-k3_2026-03-18_21-42-52/test_results/independent_summary.tsv

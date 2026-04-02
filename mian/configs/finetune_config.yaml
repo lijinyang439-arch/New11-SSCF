@@ -1,0 +1,45 @@
+# configs/finetune_config.yaml
+
+# === 基础配置 (沿用原有的) ===
+run_name: "finetune_target_adaptation"
+results_root: "./results"
+seed: 42
+gpus: "0,1,3"
+num_workers: 4
+batch_size: 128
+loss_function: "CrossEntropyLoss"
+
+# === 微调核心配置 ===
+finetune:
+  enabled: true
+  # 【关键】预训练模型的路径
+  pretrained_path: "/data/lijinyang/1_SleepHDG主要运行代码/wujiHDGDDP/results/SleepHDG_all数据集_5轮test一次_不用几何中心_目前最全/fold0/best_val_ep193_vacc_0.87745_vf1_0.81918.pth"
+
+  # 【关键】要微调的目标域 (必须是 datasets_map 中的名字)
+  target_domain: "sleep-edfx"
+
+  # 【关键】目标域适应比例 (0.0 - 1.0)
+  # 例如 0.1 表示将目标域 10% 的数据加入训练集，剩余 90% 用于测试
+  # 如果设为 0.0，则就是普通的 Source-Only 微调
+  adaptation_ratio: 0
+
+  # 微调的学习率 (建议比预训练小 10 倍)
+  lr: 0.0001
+  epochs: 300
+
+# === 数据集路径 ===
+datasets_dir: "/fdata/lijinyang/datasets_dir2_all_Merged"
+
+# === 模型参数 (必须与预训练时一致) ===
+model_version: original
+model_type: "AE_Classifier"
+num_of_classes: 5
+dropout: 0.1
+projection_type: "none"
+lambda_ae: 1.0
+lambda_psd: 0.0
+lambda_coral: 0.0
+
+# === 其他 ===
+eval_test_every_epoch: True
+max_samples_per_dataset:  # 如果需要限制源域数据量

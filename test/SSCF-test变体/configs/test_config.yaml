@@ -1,0 +1,97 @@
+# test_config.yaml
+# =========================
+# 核心测试配置
+# =========================
+model_version: original_sleepdg
+results_log_dir: '/root/autodl-tmp/wujiHDGDDP/results/Ours-k1_2026-03-16_08-57-53'
+
+# 当前要测试的数据集
+# 第一类（交叉验证目标域）可选：
+#   SHHS1 / P2018 / MROS1 / MROS2 / MESA
+# 第二类（独立测试集）可选：
+#   ABC / CCSHS / CFS / HMC / ISRUC / sleep-edfx
+test_dataset: 'MROS2'
+align:
+  use_alignment: True
+  # 指定 聚类中心路径
+  cluster_centers_path: "/root/autodl-tmp/cluster/cluster_output_direct1/ours1_centers.npy"
+  cluster_map_path: "/root/autodl-tmp/cluster/cluster_output_direct1/ours1_map.json"
+# =========================
+# 设备与随机种子
+# =========================
+seed: 42
+gpus: "1"   # 例如 "0" / "1" / "0,1"；空字符串 "" 表示 CPU
+
+# =========================
+# 数据加载
+# =========================
+datasets_dir: '/root/autodl-tmp/PSG'
+batch_size: 256
+num_workers: 8
+
+# =========================
+# 数据集分组配置
+# 这两个字段是给新版 test.py 用的
+# =========================
+
+# 第一类：5折交叉验证目标域
+# 顺序必须与你 model.ckpts 的顺序一一对应
+# 即：
+#   ckpts[0] -> SHHS1
+#   ckpts[1] -> P2018
+#   ckpts[2] -> MROS1
+#   ckpts[3] -> MROS2
+#   ckpts[4] -> MESA
+cv_target_order:
+  - SHHS1
+  - P2018
+  - MROS1
+  - MROS2
+  - MESA
+
+# 第二类：独立测试集
+independent_test_datasets:
+  - ABC
+  - CCSHS
+  - CFS
+  - HMC
+  - ISRUC
+  - sleep-edfx
+
+# =========================
+# 模型加载配置
+# =========================
+model:
+  import_path: "original.models.model"
+  class_name: "Model"
+
+  # 显式列出 5 个 fold 的权重
+  ckpts:
+    - "/root/autodl-tmp/wujiHDGDDP/results/Ours-k1_2026-03-16_08-57-53/fold0/topk_ep003_va0.8316_ta0.8488.pth"
+    - "/root/autodl-tmp/wujiHDGDDP/results/Ours-k1_2026-03-16_08-57-53/fold1/topk_ep005_va0.8541_ta0.8681.pth"
+    - "/root/autodl-tmp/wujiHDGDDP/results/Ours-k1_2026-03-16_08-57-53/fold2/topk_ep011_va0.8638_ta0.7870.pth"
+    - "/root/autodl-tmp/wujiHDGDDP/results/Ours-k1_2026-03-16_08-57-53/fold3/topk_ep004_va0.8624_ta0.8104.pth"
+    - "/root/autodl-tmp/wujiHDGDDP/results/Ours-k1_2026-03-16_08-57-53/fold4/topk_ep005_va0.8645_ta0.7072.pth"
+
+  ensemble_method: "logits"   # "logits" 或 "probs"
+  strict_load: true
+  use_dataparallel: false
+
+  # 可选，不写也行
+  # primary_index: 0
+  # primary_key: "logits"
+
+# =========================
+# 模型架构参数
+# 必须与训练时一致
+# =========================
+model_type: 'LDP_CAA_Model'
+num_of_classes: 5
+dropout: 0.1
+
+projection_type: 'diag'
+lowrank_rank: 32
+enable_stats_alignment: 1
+anchor_momentum: 0.9
+
+num_domains: 4

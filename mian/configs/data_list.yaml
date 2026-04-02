@@ -1,0 +1,48 @@
+datasets_lodo_order = [
+    'cluster_0',  # LODO 折 0
+    'cluster_1',       # LODO 折 2
+    'cluster_2',       # LODO 折 3
+    'cluster_3',  # LODO 折 3
+    'cluster_4',  # LODO 折 3
+]
+
+
+datasets_lodo_order = [
+    'cluster_0',  # LODO 折 0
+    'cluster_1',       # LODO 折 2
+    'cluster_2',       # LODO 折 3
+    'cluster_3',  # LODO 折 3
+    'cluster_4',  # LODO 折 3
+]
+
+
+
+
+        self.datasets_map = {
+            'cluster_0': 0,
+            'cluster_1':1,
+            'cluster_2': 2,
+            'cluster_3': 3,
+            'cluster_4': 4,
+        }
+datasets_lodo_order = [
+    'sleep-edf',  # LODO 折 0
+    'HMC',       # LODO 折 2
+    'ISRUC',       # LODO 折 3
+    'SHHS1',  # LODO 折 3
+    'P2018',  # LODO 折 3
+    'ABC',
+    'CCSHS',
+    'MROS1',
+]
+
+self.datasets_map = {
+    'sleep-edf': 0,
+    'HMC': 1,
+    'ISRUC': 2,
+    'SHHS1': 3,
+    'P2018': 4,
+    'ABC': 5,
+    'CCSHS': 6,
+    'MROS1': 7,
+}
